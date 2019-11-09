@@ -1,6 +1,7 @@
 # Exclude the following files or folders from language statistics
 ASP_MVC_Website/Content/* linguist-vendored
 ASP_MVC_Website/Scripts/* linguist-vendored
+ASP_MVC_Website/css/* linguist-vendored
 
 # Include the following files or folders for language renaming
 ASP_MVC_Website/Models/* linguist-language=CSHARP
@@ -9,7 +10,7 @@ ASP_MVC_Website/Controllers/* linguist-language=CSHARP
 ASP_MVC_Website/ViewModel/* linguist-language=CSHARP
 
 # Include the following files or folders for language detection
-*.sql linguist-detectable=true
+#*.sql linguist-detectable=true
 
 # Auto detect text files and perform LF normalization
 * text=auto
