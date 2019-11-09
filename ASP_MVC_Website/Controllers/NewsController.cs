@@ -13,12 +13,12 @@ namespace ASP_MVC_Website.Controllers
 {
     public class NewsController : Controller
     {
-        private INewsBusiness _business;
+        private INewsBusiness _businessNews;
         private IUserBusiness _businessUser;
 
         public NewsController()
         {
-            _business = new NewsBusiness(new ModelStateWrapper(this.ModelState), new UnitOfWork());
+            _businessNews = new NewsBusiness(new ModelStateWrapper(this.ModelState), new UnitOfWork());
             _businessUser = new UserBusiness(new UnitOfWork());
         }        
 
@@ -26,14 +26,14 @@ namespace ASP_MVC_Website.Controllers
 
         public ActionResult Index()
         {
-            return View(_business.ListNews());
+            return View(_businessNews.ListNews());
         }
 
         // GET: /News/Details/5
 
         public ActionResult Details(int id = 0)
         {
-            NewsUserViewModel news = _business.DetailsNews(id); 
+            NewsUserViewModel news = _businessNews.DetailsNews(id); 
             if (news == null)
             {
                 return HttpNotFound();
@@ -56,8 +56,8 @@ namespace ASP_MVC_Website.Controllers
         public ActionResult Create(News news)
         {
             if (ModelState.IsValid)
-            {               
-                _business.CreateNews(news);
+            {
+                _businessNews.CreateNews(news);
                 return RedirectToAction("Index");
             }
 
@@ -70,7 +70,7 @@ namespace ASP_MVC_Website.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            News news = _business.EditNews(id); 
+            News news = _businessNews.EditNews(id); 
             if (news == null)
             {
                 return HttpNotFound();
@@ -88,7 +88,7 @@ namespace ASP_MVC_Website.Controllers
         {
             if (ModelState.IsValid)
             {
-                _business.EditNews(news);
+                _businessNews.EditNews(news);
                 return RedirectToAction("Index");
             }
 
@@ -101,7 +101,7 @@ namespace ASP_MVC_Website.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            NewsUserViewModel news = _business.DeleteNews(id);
+            NewsUserViewModel news = _businessNews.DeleteNews(id);
             if (news == null)
             {
                 return HttpNotFound();
@@ -115,7 +115,7 @@ namespace ASP_MVC_Website.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            _business.DeleteNewsConfirm(id);           
+            _businessNews.DeleteNewsConfirm(id);           
             return RedirectToAction("Index");
         }
     }

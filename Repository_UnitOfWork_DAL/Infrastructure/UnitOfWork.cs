@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Repository_UnitOfWork_DAL.Infrastructure
 {
-    public class UnitOfWork:IDisposable
+    public class UnitOfWork : IDisposable 
     {
         private CMSDatabaseEntities entities = null;
 

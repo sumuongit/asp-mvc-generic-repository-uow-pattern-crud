@@ -8,7 +8,7 @@ using System.Web;
 
 namespace ATAB_CMS_Website.Models.User_BL
 {
-    public class UserBusiness: IUserBusiness
+    public class UserBusiness : IUserBusiness
     {        
         private UnitOfWork uow = null;
 
