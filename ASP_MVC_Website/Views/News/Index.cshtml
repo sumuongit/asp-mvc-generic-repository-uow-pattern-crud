@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ASP_MVC_Website.ViewModel.NewsUserViewModel>
+
+@{
+    ViewBag.Title = "News List";
+}
+
+<h2>News List</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.News.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.News.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.News.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.News.Status)
+            </th> 
+            <th>
+                @*@Html.DisplayNameFor(model => model.User.UserName)*@
+                User
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.News.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.News.ImagePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.News.CreateDate)
+            </td>
+            <td>
+                @((bool)item.News.Status ? "Yes" : "No")
+            </td>  
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.News.NewsId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.News.NewsId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.News.NewsId })
+            </td>
+        </tr>
+    }
+
+    </table>

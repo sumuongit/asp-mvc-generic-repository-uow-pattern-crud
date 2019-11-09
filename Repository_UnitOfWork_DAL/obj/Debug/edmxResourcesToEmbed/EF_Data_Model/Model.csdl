@@ -1,0 +1,562 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVC.CMS.Website.DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agency">
+    <Key>
+      <PropertyRef Name="AgencyId" />
+    </Key>
+    <Property Name="AgencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AgencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CommitteeMembers" Relationship="Self.FK_CommitteeMember_Agency" FromRole="Agency" ToRole="CommitteeMember" />
+    <NavigationProperty Name="UserAgencies" Relationship="Self.FK_UserAgency_Agency" FromRole="Agency" ToRole="UserAgency" />
+  </EntityType>
+  <EntityType Name="Banner">
+    <Key>
+      <PropertyRef Name="BannerId" />
+    </Key>
+    <Property Name="BannerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BannerPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Banner_User" FromRole="Banner" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Circular">
+    <Key>
+      <PropertyRef Name="CircularId" />
+    </Key>
+    <Property Name="CircularId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Circular_User" FromRole="Circular" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Committee">
+    <Key>
+      <PropertyRef Name="CommitteeId" />
+    </Key>
+    <Property Name="CommitteeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="CommitteeMembers" Relationship="Self.FK_CommitteeMember_Committee" FromRole="Committee" ToRole="CommitteeMember" />
+  </EntityType>
+  <EntityType Name="CommitteeMember">
+    <Key>
+      <PropertyRef Name="CommitteeMemberId" />
+    </Key>
+    <Property Name="CommitteeMemberId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CommitteeId" Type="Int32" />
+    <Property Name="AgencyId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Agency" Relationship="Self.FK_CommitteeMember_Agency" FromRole="CommitteeMember" ToRole="Agency" />
+    <NavigationProperty Name="Committee" Relationship="Self.FK_CommitteeMember_Committee" FromRole="CommitteeMember" ToRole="Committee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhotoPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceFromDate" Type="DateTime" Precision="3" />
+    <Property Name="ServiceToDate" Type="DateTime" Precision="3" />
+    <Property Name="EmployeeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="EventType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Event_User" FromRole="Event" ToRole="User" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsId" />
+    </Key>
+    <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK_News_User" FromRole="News" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Notice">
+    <Key>
+      <PropertyRef Name="NoticeId" />
+    </Key>
+    <Property Name="NoticeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="NoticeType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Notice_User" FromRole="Notice" ToRole="User" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="PaymentMethodId" />
+    </Key>
+    <Property Name="PaymentMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PaymentMethod1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="UserPaymentMethods" Relationship="Self.FK_UserPaymentMethod_PaymentMethod" FromRole="PaymentMethod" ToRole="UserPaymentMethod" />
+  </EntityType>
+  <EntityType Name="PhotoGallery">
+    <Key>
+      <PropertyRef Name="PhotoId" />
+    </Key>
+    <Property Name="PhotoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PhotoPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="PhotoType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK_PhotoGallery_User" FromRole="PhotoGallery" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Publication">
+    <Key>
+      <PropertyRef Name="PublicationId" />
+    </Key>
+    <Property Name="PublicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PublicationPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Publication_User" FromRole="Publication" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TraineeAtti">
+    <Key>
+      <PropertyRef Name="TraineeId" />
+    </Key>
+    <Property Name="TraineeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="PresentAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="PermanentAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TelephoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Trainee_User" FromRole="TraineeAtti" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Banners" Relationship="Self.FK_Banner_User" FromRole="User" ToRole="Banner" />
+    <NavigationProperty Name="Circulars" Relationship="Self.FK_Circular_User" FromRole="User" ToRole="Circular" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_Event_User" FromRole="User" ToRole="Event" />
+    <NavigationProperty Name="News" Relationship="Self.FK_News_User" FromRole="User" ToRole="News" />
+    <NavigationProperty Name="Notices" Relationship="Self.FK_Notice_User" FromRole="User" ToRole="Notice" />
+    <NavigationProperty Name="PhotoGalleries" Relationship="Self.FK_PhotoGallery_User" FromRole="User" ToRole="PhotoGallery" />
+    <NavigationProperty Name="Publications" Relationship="Self.FK_Publication_User" FromRole="User" ToRole="Publication" />
+    <NavigationProperty Name="TraineeAttis" Relationship="Self.FK_Trainee_User" FromRole="User" ToRole="TraineeAtti" />
+    <NavigationProperty Name="UserAgencies" Relationship="Self.FK_UserAgency_User" FromRole="User" ToRole="UserAgency" />
+    <NavigationProperty Name="UserPaymentMethods" Relationship="Self.FK_UserPaymentMethod_User" FromRole="User" ToRole="UserPaymentMethod" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_User" FromRole="User" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="UserAgency">
+    <Key>
+      <PropertyRef Name="UserAgencyId" />
+    </Key>
+    <Property Name="UserAgencyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="AgencyId" Type="Int32" />
+    <Property Name="AgencyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPersonDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPersonNationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPersonNIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPersonBirthDate" Type="DateTime" Precision="3" />
+    <Property Name="ContactPersonPermanentAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="TradeLicenseNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MOCATRegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TelephoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Agency" Relationship="Self.FK_UserAgency_Agency" FromRole="UserAgency" ToRole="Agency" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserAgency_User" FromRole="UserAgency" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserPaymentMethod">
+    <Key>
+      <PropertyRef Name="UserPaymentMethodId" />
+    </Key>
+    <Property Name="UserPaymentMethodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="PaymentMethodId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_UserPaymentMethod_PaymentMethod" FromRole="UserPaymentMethod" ToRole="PaymentMethod" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserPaymentMethod_User" FromRole="UserPaymentMethod" ToRole="User" />
+    <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_UserPaymentMethod" FromRole="UserPaymentMethod" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleId" />
+    </Key>
+    <Property Name="UserRoleId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserRole_User" FromRole="UserRole" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+    </Key>
+    <Property Name="TransactionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserPaymentMethodId" Type="Int32" />
+    <Property Name="CardHolderName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CardExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="CardSecurityCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TransactionDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="UserPaymentMethod" Relationship="Self.FK_Transaction_UserPaymentMethod" FromRole="Transaction" ToRole="UserPaymentMethod" />
+  </EntityType>
+  <Association Name="FK_CommitteeMember_Agency">
+    <End Role="Agency" Type="Self.Agency" Multiplicity="0..1" />
+    <End Role="CommitteeMember" Type="Self.CommitteeMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agency">
+        <PropertyRef Name="AgencyId" />
+      </Principal>
+      <Dependent Role="CommitteeMember">
+        <PropertyRef Name="AgencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAgency_Agency">
+    <End Role="Agency" Type="Self.Agency" Multiplicity="0..1" />
+    <End Role="UserAgency" Type="Self.UserAgency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Agency">
+        <PropertyRef Name="AgencyId" />
+      </Principal>
+      <Dependent Role="UserAgency">
+        <PropertyRef Name="AgencyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Banner_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Banner" Type="Self.Banner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Banner">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Circular_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Circular" Type="Self.Circular" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Circular">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CommitteeMember_Committee">
+    <End Role="Committee" Type="Self.Committee" Multiplicity="0..1" />
+    <End Role="CommitteeMember" Type="Self.CommitteeMember" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Committee">
+        <PropertyRef Name="CommitteeId" />
+      </Principal>
+      <Dependent Role="CommitteeMember">
+        <PropertyRef Name="CommitteeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_News_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="News" Type="Self.News" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="News">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Notice_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Notice">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPaymentMethod_PaymentMethod">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+    <End Role="UserPaymentMethod" Type="Self.UserPaymentMethod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="PaymentMethodId" />
+      </Principal>
+      <Dependent Role="UserPaymentMethod">
+        <PropertyRef Name="PaymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhotoGallery_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="PhotoGallery" Type="Self.PhotoGallery" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="PhotoGallery">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Publication_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Publication" Type="Self.Publication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Publication">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trainee_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="TraineeAtti" Type="Self.TraineeAtti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="TraineeAtti">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAgency_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserAgency" Type="Self.UserAgency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserAgency">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserPaymentMethod_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserPaymentMethod" Type="Self.UserPaymentMethod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserPaymentMethod">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRole_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Transaction_UserPaymentMethod">
+    <End Role="UserPaymentMethod" Type="Self.UserPaymentMethod" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserPaymentMethod">
+        <PropertyRef Name="UserPaymentMethodId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="UserPaymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CMSDatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agencies" EntityType="Self.Agency" />
+    <EntitySet Name="Banners" EntityType="Self.Banner" />
+    <EntitySet Name="Circulars" EntityType="Self.Circular" />
+    <EntitySet Name="Committees" EntityType="Self.Committee" />
+    <EntitySet Name="CommitteeMembers" EntityType="Self.CommitteeMember" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="Notices" EntityType="Self.Notice" />
+    <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+    <EntitySet Name="PhotoGalleries" EntityType="Self.PhotoGallery" />
+    <EntitySet Name="Publications" EntityType="Self.Publication" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TraineeAttis" EntityType="Self.TraineeAtti" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserAgencies" EntityType="Self.UserAgency" />
+    <EntitySet Name="UserPaymentMethods" EntityType="Self.UserPaymentMethod" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+    <AssociationSet Name="FK_CommitteeMember_Agency" Association="Self.FK_CommitteeMember_Agency">
+      <End Role="Agency" EntitySet="Agencies" />
+      <End Role="CommitteeMember" EntitySet="CommitteeMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAgency_Agency" Association="Self.FK_UserAgency_Agency">
+      <End Role="Agency" EntitySet="Agencies" />
+      <End Role="UserAgency" EntitySet="UserAgencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Banner_User" Association="Self.FK_Banner_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Banner" EntitySet="Banners" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Circular_User" Association="Self.FK_Circular_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Circular" EntitySet="Circulars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CommitteeMember_Committee" Association="Self.FK_CommitteeMember_Committee">
+      <End Role="Committee" EntitySet="Committees" />
+      <End Role="CommitteeMember" EntitySet="CommitteeMembers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_User" Association="Self.FK_Event_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Event" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_News_User" Association="Self.FK_News_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="News" EntitySet="News" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Notice_User" Association="Self.FK_Notice_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Notice" EntitySet="Notices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPaymentMethod_PaymentMethod" Association="Self.FK_UserPaymentMethod_PaymentMethod">
+      <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+      <End Role="UserPaymentMethod" EntitySet="UserPaymentMethods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhotoGallery_User" Association="Self.FK_PhotoGallery_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PhotoGallery" EntitySet="PhotoGalleries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Publication_User" Association="Self.FK_Publication_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Publication" EntitySet="Publications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trainee_User" Association="Self.FK_Trainee_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="TraineeAtti" EntitySet="TraineeAttis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAgency_User" Association="Self.FK_UserAgency_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserAgency" EntitySet="UserAgencies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserPaymentMethod_User" Association="Self.FK_UserPaymentMethod_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserPaymentMethod" EntitySet="UserPaymentMethods" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Transaction_UserPaymentMethod" Association="Self.FK_Transaction_UserPaymentMethod">
+      <End Role="UserPaymentMethod" EntitySet="UserPaymentMethods" />
+      <End Role="Transaction" EntitySet="Transactions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

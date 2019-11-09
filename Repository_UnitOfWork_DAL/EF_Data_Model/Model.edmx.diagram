@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a3937d6b40b04c9c9b64420f4649adbc" Name="Diagram1">
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Agency" Width="1.5" PointX="3.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Banner" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Circular" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Committee" Width="1.5" PointX="3.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.CommitteeMember" Width="1.5" PointX="6" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Employee" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Event" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.News" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Notice" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.PaymentMethod" Width="1.5" PointX="3.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.PhotoGallery" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Publication" Width="1.5" PointX="3" PointY="28.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Role" Width="1.5" PointX="3.75" PointY="38.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.TraineeAtti" Width="1.5" PointX="3" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.User" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.UserAgency" Width="1.5" PointX="6" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.UserPaymentMethod" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.UserRole" Width="1.5" PointX="6" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVC.CMS.Website.DatabaseModel.Transaction" Width="1.5" PointX="8.25" PointY="15.375" IsExpanded="true" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_CommitteeMember_Agency" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_UserAgency_Agency" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_Banner_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_Circular_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_CommitteeMember_Committee" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_Event_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_News_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_Notice_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_UserPaymentMethod_PaymentMethod" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_PhotoGallery_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_Publication_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_UserRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_Trainee_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_UserAgency_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_UserPaymentMethod_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_UserRole_User" ManuallyRouted="false" />
+        <AssociationConnector Association="MVC.CMS.Website.DatabaseModel.FK_Transaction_UserPaymentMethod" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
