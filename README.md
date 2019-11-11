@@ -1,5 +1,6 @@
 ## Table of Contents
 * [General Info](#general-info)
+* [Database Scripts](#database-scripts)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Contributing](#contributing)
@@ -7,6 +8,9 @@
 
 ## General Info
 A sample application depicting solution architecture for a CRUD operation using ASP.NET MVC, Entity Framework (Database First Approach) and SQL Server 2014 following Repository and Unit of Work design pattern
+
+## Database Scripts
+[Database Scripts](https://github.com/sumuongit/asp-mvc-viewmodel-repository-uow-pattern-crud/tree/master/ASP_MVC_Website/Database)
 
 ## Technologies
 This application is created with:
