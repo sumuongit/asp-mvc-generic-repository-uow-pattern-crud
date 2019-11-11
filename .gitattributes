@@ -10,7 +10,7 @@ ASP_MVC_Website/Controllers/* linguist-language=CSHARP
 ASP_MVC_Website/ViewModel/* linguist-language=CSHARP
 
 # Include the following files or folders for language detection
-#*.sql linguist-detectable=true
+*.sql linguist-detectable=true
 
 # Auto detect text files and perform LF normalization
 * text=auto
