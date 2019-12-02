@@ -10,7 +10,7 @@
 A sample application depicting solution architecture for a CRUD operation using ASP.NET MVC, Entity Framework (Database First Approach) and SQL Server 2014 following Repository and Unit of Work design pattern
 
 ## Database Scripts
-[Database Scripts](https://github.com/sumuongit/asp-mvc-viewmodel-repository-uow-pattern-crud/tree/master/ASP_MVC_Website/Database)
+[Database Scripts](https://github.com/sumuongit/asp-mvc-generic-repository-uow-pattern-crud/tree/master/ASP_MVC_Website/Database)
 
 ## Technologies
 This application is created with:
@@ -25,9 +25,9 @@ To clone and run this repository you will need [Git](https://git-scm.com/) insta
 
 ```
 # Clone this repository
-$ git clone https://github.com/sumuongit/asp-mvc-viewmodel-repository-uow-pattern-crud.git
+$ git clone https://github.com/sumuongit/asp-mvc-generic-repository-uow-pattern-crud.git
 # Go into the repository
-$ cd asp-mvc-viewmodel-repository-uow-pattern-crud
+$ cd asp-mvc-generic-repository-uow-pattern-crud
 ```
 
 ## Contributing
@@ -38,4 +38,4 @@ $ cd asp-mvc-viewmodel-repository-uow-pattern-crud
 * Submit a pull request
 
 ## License
-[MIT License](https://github.com/sumuongit/asp-mvc-viewmodel-repository-uow-pattern-crud/blob/master/LICENSE)
+[MIT License](https://github.com/sumuongit/asp-mvc-generic-repository-uow-pattern-crud/blob/master/LICENSE)
